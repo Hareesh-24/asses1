@@ -6,8 +6,8 @@ Process Flow:
 Reads the JSON file.
 Cleans invalid values using the clean_nan() function.
 Checks if the recipe title already exists in the database.
-If the recipe does not exist → creates a new record.
-If the recipe already exists → skips the record.
+If the recipe does not exist then creates a new record.
+If the recipe already exists then skips the record.
 Displays the total number of created and skipped records.
 This prevents duplicate entries and ensures data consistency.
 
