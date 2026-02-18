@@ -15,7 +15,8 @@ def recipe_list_api(request):
         return JsonResponse({"error": "Invalid page or limit"}, status=400)
 
     queryset = Recipe.objects.all().order_by(
-        F('rating').desc(nulls_last=True)
+        #so to implement descending order and with the filter condition 'rating'
+        F('rating').desc(nulls_last=True) 
     )
 
     paginator = Paginator(queryset, limit)
@@ -49,13 +50,13 @@ def recipe_list_api(request):
     })
 def recipe_search_api(request):
     queryset = Recipe.objects.all()
-
+    #gets the complete data
     title = request.GET.get('title')
     cuisine = request.GET.get('cuisine')
     rating = request.GET.get('rating')
     total_time = request.GET.get('total_time')
     calories = request.GET.get('calories')
-
+    #fetches and stores 
     if title:
         queryset = queryset.filter(title__icontains=title)
     if cuisine:
