@@ -42,10 +42,10 @@ def recipe_list_api(request):
         })
 
     return JsonResponse({
-        "page": page,
-        "limit": limit,
-        "total": paginator.count,
-        "data": results
+        "page":page,
+        "limit":limit,
+        "total":paginator.count,
+        "data":results
     })
 def recipe_search_api(request):
     queryset = Recipe.objects.all()

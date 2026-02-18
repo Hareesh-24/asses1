@@ -7,9 +7,9 @@ from recipe_list.models import Recipe
 def clean_nan(value):
     if value is None:
         return None
-    if isinstance(value, float) and math.isnan(value):
+    if isinstance(value,float) and math.isnan(value):
         return None
-    if isinstance(value, str) and value.strip().lower() == 'nan':
+    if isinstance(value,str) and value.strip().lower() == 'nan':
         return None
     return value
 
@@ -45,14 +45,14 @@ class Command(BaseCommand):
             recipe, was_created = Recipe.objects.get_or_create(
                 title=title,
                 defaults={
-                    'cuisine':     item.get('cuisine', ''),
-                    'rating':      clean_nan(item.get('rating')),
-                    'prep_time':   clean_nan(item.get('prep_time')),
-                    'cook_time':   clean_nan(item.get('cook_time')),
-                    'total_time':  clean_nan(item.get('total_time')),
-                    'description': item.get('description', ''),
-                    'nutrients':   item.get('nutrients') or None,
-                    'serves':      item.get('serves', ''),
+                    'cuisine':item.get('cuisine', ''),
+                    'rating':clean_nan(item.get('rating')),
+                    'prep_time':clean_nan(item.get('prep_time')),
+                    'cook_time':clean_nan(item.get('cook_time')),
+                    'total_time':clean_nan(item.get('total_time')),
+                    'description':item.get('description', ''),
+                    'nutrients':item.get('nutrients') or None,
+                    'serves':item.get('serves', ''),
                 }
             )
             if was_created:
@@ -63,3 +63,4 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS(
             f"Done! Created: {created}, Skipped (duplicates): {skipped}"
         ))
+        
