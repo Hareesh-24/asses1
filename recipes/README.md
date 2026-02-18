@@ -1,3 +1,31 @@
+How It Works
+
+Reads JSON file.
+
+Cleans invalid values using clean_nan() function.
+
+Checks if recipe title already exists.
+
+If not exists → creates new record.
+
+If exists → skips the record.
+
+Displays number of created and skipped records.
+
+
+Command Usage
+
+Default file:
+
+python manage.py load_recipes
+
+
+Custom file:
+
+python manage.py load_recipes --file=data.json
+
+
+
 python manage.py sqlmigrate recipe_list 0001
 BEGIN;
 --
