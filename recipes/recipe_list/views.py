@@ -20,7 +20,7 @@ def recipe_list_api(request):
     )
 
     paginator = Paginator(queryset, limit)
-
+    #another try block to handle invalid pages
     try:
         recipes_page = paginator.page(page)
     except:
